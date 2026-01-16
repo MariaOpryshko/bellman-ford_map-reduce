@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Console Appender - логи идут в stderr -->
+        <Console name="Console" target="SYSTEM_ERR">
+            <PatternLayout pattern="%d{ISO8601} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <!-- Логирование для наших классов -->
+        <Logger name="org.project.input.BellmanFordMapper" level="INFO"/>
+        <Logger name="org.project.BellmanFordReducer" level="INFO"/>
+        <Logger name="org.project.BellmanFordMain" level="INFO"/>
+
+        <!-- Уменьшаем шум от Hadoop -->
+        <Logger name="org.apache.hadoop" level="WARN"/>
+        <Logger name="org.apache.hadoop.mapreduce" level="INFO"/>
+
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
